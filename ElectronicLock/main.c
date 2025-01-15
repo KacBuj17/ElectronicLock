@@ -8,8 +8,9 @@ volatile uint8_t S3_press = 0;
 volatile uint8_t S4_press = 0;
 
 static uchar status;
-static uchar str[MAX_LEN];
+static uchar str[UID_LENGTH];
 static uchar cardID[5];
+static char uid_str[16];
 
 void PORTA_IRQHandler(void)
 {
@@ -47,9 +48,17 @@ void PORTA_IRQHandler(void)
         }
         break;
     case S4_MASK:
-        if (!S4_press)
+				DELAY(100)
+        if (!(PTA->PDIR & S4_MASK)) // Minimalizacja drgañ zestyków
         {
-            S4_press = 1;
+            DELAY(100)
+            if (!(PTA->PDIR & S4_MASK)) // Minimalizacja drgañ zestyków (c.d.)
+            {
+                if (!S4_press)
+								{
+										S4_press = 1;
+								}
+            }
         }
         break;
     default:
@@ -59,17 +68,14 @@ void PORTA_IRQHandler(void)
     NVIC_ClearPendingIRQ(PORTA_IRQn);
 }
 
-void handleS4Press()
+void handleUsersAdministrate()
 {
-    char uid_str[UID_LENGTH];
     uint32_t timeout = 5000;
     uint32_t start = SysTick->VAL;
 
     LCD1602_ClearAll();
     LCD1602_SetCursor(0, 0);
-    LCD1602_Print("Scan RFID for:");
-    LCD1602_SetCursor(0, 1);
-    LCD1602_Print(current_room);
+    LCD1602_Print("Waiting for card");
 
     while ((SysTick->VAL - start) < timeout)
     {
@@ -87,7 +93,30 @@ void handleS4Press()
     }
 
     LCD1602_ClearAll();
-    S4_press = 0;
+}
+
+void handleRfidAccess()
+{
+		status = MFRC522_Request(PICC_REQIDL, str);
+		if(status == MI_OK)
+		{
+				status = MFRC522_Anticoll(cardID);
+				if(status == MI_OK)
+				{
+						sprintf(uid_str,"0x%x0x%x0x%x0x%x",cardID[0],cardID[1],cardID[2],cardID[3]);
+						if(isUserInRoom(current_room, uid_str))
+						{
+								LCD1602_SetCursor(0, 1);
+								LCD1602_Print("ACCESS GRANTED");
+						}
+						else
+						{
+								LCD1602_SetCursor(0, 1);
+								LCD1602_Print("ACCESS DENIED");
+						}
+						DELAY(8000)
+				}
+		}
 }
 
 int main(void)
@@ -108,8 +137,6 @@ int main(void)
     while (PTA->PDIR & S1_MASK);
     LCD1602_ClearAll();
 
-    char uid_str[16];
-
     while (1)
     {
         LCD1602_ClearAll();
@@ -117,27 +144,8 @@ int main(void)
         LCD1602_Print("Current Room: ");
         LCD1602_SetCursor(13, 0);
         LCD1602_Print(current_room);
-
-        status = MFRC522_Request(PICC_REQIDL, str);
-        if(status == MI_OK)
-        {
-            status = MFRC522_Anticoll(cardID);
-            if(status == MI_OK)
-            {
-                sprintf(uid_str,"0x%x0x%x0x%x0x%x",cardID[0],cardID[1],cardID[2],cardID[3]);
-                if(isUserInRoom(current_room, uid_str))
-                {
-                    LCD1602_SetCursor(0, 1);
-                    LCD1602_Print("ACCESS GRANTED");
-                }
-                else
-                {
-                    LCD1602_SetCursor(0, 1);
-                    LCD1602_Print("ACCESS DENIED");
-                }
-                DELAY(8000)
-            }
-        }
+			
+				handleRfidAccess();
 
         if (S2_press)
 				{
@@ -151,9 +159,9 @@ int main(void)
 				}
         if (S4_press)
         {
-            handleS4Press();
+            handleUsersAdministrate();
+						S4_press = 0;
         }
-        DELAY(1000)
     }
 
     return 0;

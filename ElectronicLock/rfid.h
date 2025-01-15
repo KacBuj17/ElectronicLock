@@ -62,6 +62,7 @@
 #define     BitFramingReg         0x0D
 #define     CollReg               0x0E
 #define     Reserved01            0x0F
+
 //Page 1: Command
 #define     Reserved10            0x10
 #define     ModeReg               0x11
@@ -79,6 +80,7 @@
 #define     Reserved13            0x1D
 #define     Reserved14            0x1E
 #define     SerialSpeedReg        0x1F
+
 //Page 2: Configuration
 #define     Reserved20            0x20
 #define     CRCResultRegH         0x21
@@ -88,7 +90,7 @@
 #define     Reserved22            0x25
 #define     RFCfgReg              0x26
 #define     GsNReg                0x27
-#define     CWGsPReg	          0x28
+#define     CWGsPReg	          	0x28
 #define     ModGsPReg             0x29
 #define     TModeReg              0x2A
 #define     TPrescalerReg         0x2B
@@ -96,6 +98,7 @@
 #define     TReloadRegL           0x2D
 #define     TCounterValueRegH     0x2E
 #define     TCounterValueRegL     0x2F
+
 //Page 3: Test Registers
 #define     Reserved30            0x30
 #define     TestSel1Reg           0x31
@@ -112,7 +115,7 @@
 #define     Reserved31            0x3C
 #define     Reserved32            0x3D
 #define     Reserved33            0x3E
-#define     Reserved34			  0x3F
+#define     Reserved34			   		0x3F
 
 // Functions for manipulating the MFRC522
 void MFRC522_Init(void);

@@ -1,0 +1,142 @@
+Dependencies for Project 'ElectronicLock', Target 'FRDM-KL05ZJ': (DO NOT MODIFY !)
+CompilerVersion: 6160000::V6.16::ARMCLANG
+F (.\main.c)(0x67879556)(-xc -std=c99 --target=arm-arm-none-eabi -mcpu=cortex-m0plus -c-fno-rtti -funsigned-char -fshort-enums -fshort-wchar-D__EVAL -gdwarf-4 -O1 -ffunction-sections -Weverything -Wno-packed -Wno-reserved-id-macro -Wno-unused-macros -Wno-documentation-unknown-command -Wno-documentation -Wno-license-management -Wno-parentheses-equality -I./RTE/_FRDM-KL05ZJ-IC:/Users/Kacper/AppData/Local/Arm/Packs/ARM/CMSIS/6.1.0/CMSIS/Core/Include-IC:/Users/Kacper/AppData/Local/Arm/Packs/Keil/Kinetis_KLxx_DFP/1.15.1/Device/Include-D__UVISION_VERSION="536" -D_RTE_ -DMKL05Z32xxx4 -D_RTE_-o ./objects/main.o -MD)
+I (C:\Keil_v5\ARM\ARMCLANG\include\stdio.h)(0x60355C34)
+I (C:\Keil_v5\ARM\ARMCLANG\include\string.h)(0x60355C30)
+I (C:\Keil_v5\ARM\ARMCLANG\include\stdlib.h)(0x60355C30)
+I (main.h)(0x6781E17C)
+I (users.h)(0x6781E262)
+I (C:\Keil_v5\ARM\ARMCLANG\include\stdint.h)(0x60355C30)
+I (C:\Users\Kacper\AppData\Local\Arm\Packs\Keil\Kinetis_KLxx_DFP\1.15.1\Device\Include\MKL05Z4.h)(0x585BD06A)
+I (C:\Users\Kacper\AppData\Local\Arm\Packs\ARM\CMSIS\6.1.0\CMSIS\Core\Include\core_cm0plus.h)(0x664C2CE8)
+I (C:\Users\Kacper\AppData\Local\Arm\Packs\ARM\CMSIS\6.1.0\CMSIS\Core\Include\cmsis_version.h)(0x664C2CE8)
+I (C:\Users\Kacper\AppData\Local\Arm\Packs\ARM\CMSIS\6.1.0\CMSIS\Core\Include\cmsis_compiler.h)(0x664C2CE8)
+I (C:\Users\Kacper\AppData\Local\Arm\Packs\ARM\CMSIS\6.1.0\CMSIS\Core\Include\cmsis_armclang.h)(0x664C2CE8)
+I (C:\Keil_v5\ARM\ARMCLANG\include\arm_acle.h)(0x60355C24)
+I (C:\Users\Kacper\AppData\Local\Arm\Packs\ARM\CMSIS\6.1.0\CMSIS\Core\Include\m-profile\cmsis_armclang_m.h)(0x664C2CE8)
+I (C:\Users\Kacper\AppData\Local\Arm\Packs\Keil\Kinetis_KLxx_DFP\1.15.1\Device\Include\system_MKL05Z4.h)(0x55FBBCD8)
+I (lcd1602.h)(0x5FC545E6)
+I (frdm_bsp.h)(0x67057814)
+I (i2c.h)(0x5FBFDF5A)
+I (rooms.h)(0x6781E0D6)
+I (rfid.h)(0x6781E0DB)
+I (klaw.h)(0x677D5A04)
+F (.\i2c.c)(0x66F46710)(-xc -std=c99 --target=arm-arm-none-eabi -mcpu=cortex-m0plus -c-fno-rtti -funsigned-char -fshort-enums -fshort-wchar-D__EVAL -gdwarf-4 -O1 -ffunction-sections -Weverything -Wno-packed -Wno-reserved-id-macro -Wno-unused-macros -Wno-documentation-unknown-command -Wno-documentation -Wno-license-management -Wno-parentheses-equality -I./RTE/_FRDM-KL05ZJ-IC:/Users/Kacper/AppData/Local/Arm/Packs/ARM/CMSIS/6.1.0/CMSIS/Core/Include-IC:/Users/Kacper/AppData/Local/Arm/Packs/Keil/Kinetis_KLxx_DFP/1.15.1/Device/Include-D__UVISION_VERSION="536" -D_RTE_ -DMKL05Z32xxx4 -D_RTE_-o ./objects/i2c.o -MD)
+I (i2c.h)(0x5FBFDF5A)
+I (frdm_bsp.h)(0x67057814)
+I (C:\Users\Kacper\AppData\Local\Arm\Packs\Keil\Kinetis_KLxx_DFP\1.15.1\Device\Include\MKL05Z4.h)(0x585BD06A)
+I (C:\Users\Kacper\AppData\Local\Arm\Packs\ARM\CMSIS\6.1.0\CMSIS\Core\Include\core_cm0plus.h)(0x664C2CE8)
+I (C:\Keil_v5\ARM\ARMCLANG\include\stdint.h)(0x60355C30)
+I (C:\Users\Kacper\AppData\Local\Arm\Packs\ARM\CMSIS\6.1.0\CMSIS\Core\Include\cmsis_version.h)(0x664C2CE8)
+I (C:\Users\Kacper\AppData\Local\Arm\Packs\ARM\CMSIS\6.1.0\CMSIS\Core\Include\cmsis_compiler.h)(0x664C2CE8)
+I (C:\Users\Kacper\AppData\Local\Arm\Packs\ARM\CMSIS\6.1.0\CMSIS\Core\Include\cmsis_armclang.h)(0x664C2CE8)
+I (C:\Keil_v5\ARM\ARMCLANG\include\arm_acle.h)(0x60355C24)
+I (C:\Users\Kacper\AppData\Local\Arm\Packs\ARM\CMSIS\6.1.0\CMSIS\Core\Include\m-profile\cmsis_armclang_m.h)(0x664C2CE8)
+I (C:\Users\Kacper\AppData\Local\Arm\Packs\Keil\Kinetis_KLxx_DFP\1.15.1\Device\Include\system_MKL05Z4.h)(0x55FBBCD8)
+F (.\klaw.c)(0x677D41F8)(-xc -std=c99 --target=arm-arm-none-eabi -mcpu=cortex-m0plus -c-fno-rtti -funsigned-char -fshort-enums -fshort-wchar-D__EVAL -gdwarf-4 -O1 -ffunction-sections -Weverything -Wno-packed -Wno-reserved-id-macro -Wno-unused-macros -Wno-documentation-unknown-command -Wno-documentation -Wno-license-management -Wno-parentheses-equality -I./RTE/_FRDM-KL05ZJ-IC:/Users/Kacper/AppData/Local/Arm/Packs/ARM/CMSIS/6.1.0/CMSIS/Core/Include-IC:/Users/Kacper/AppData/Local/Arm/Packs/Keil/Kinetis_KLxx_DFP/1.15.1/Device/Include-D__UVISION_VERSION="536" -D_RTE_ -DMKL05Z32xxx4 -D_RTE_-o ./objects/klaw.o -MD)
+I (klaw.h)(0x677D5A04)
+I (C:\Users\Kacper\AppData\Local\Arm\Packs\Keil\Kinetis_KLxx_DFP\1.15.1\Device\Include\MKL05Z4.h)(0x585BD06A)
+I (C:\Users\Kacper\AppData\Local\Arm\Packs\ARM\CMSIS\6.1.0\CMSIS\Core\Include\core_cm0plus.h)(0x664C2CE8)
+I (C:\Keil_v5\ARM\ARMCLANG\include\stdint.h)(0x60355C30)
+I (C:\Users\Kacper\AppData\Local\Arm\Packs\ARM\CMSIS\6.1.0\CMSIS\Core\Include\cmsis_version.h)(0x664C2CE8)
+I (C:\Users\Kacper\AppData\Local\Arm\Packs\ARM\CMSIS\6.1.0\CMSIS\Core\Include\cmsis_compiler.h)(0x664C2CE8)
+I (C:\Users\Kacper\AppData\Local\Arm\Packs\ARM\CMSIS\6.1.0\CMSIS\Core\Include\cmsis_armclang.h)(0x664C2CE8)
+I (C:\Keil_v5\ARM\ARMCLANG\include\arm_acle.h)(0x60355C24)
+I (C:\Users\Kacper\AppData\Local\Arm\Packs\ARM\CMSIS\6.1.0\CMSIS\Core\Include\m-profile\cmsis_armclang_m.h)(0x664C2CE8)
+I (C:\Users\Kacper\AppData\Local\Arm\Packs\Keil\Kinetis_KLxx_DFP\1.15.1\Device\Include\system_MKL05Z4.h)(0x55FBBCD8)
+F (.\lcd1602.c)(0x6764411B)(-xc -std=c99 --target=arm-arm-none-eabi -mcpu=cortex-m0plus -c-fno-rtti -funsigned-char -fshort-enums -fshort-wchar-D__EVAL -gdwarf-4 -O1 -ffunction-sections -Weverything -Wno-packed -Wno-reserved-id-macro -Wno-unused-macros -Wno-documentation-unknown-command -Wno-documentation -Wno-license-management -Wno-parentheses-equality -I./RTE/_FRDM-KL05ZJ-IC:/Users/Kacper/AppData/Local/Arm/Packs/ARM/CMSIS/6.1.0/CMSIS/Core/Include-IC:/Users/Kacper/AppData/Local/Arm/Packs/Keil/Kinetis_KLxx_DFP/1.15.1/Device/Include-D__UVISION_VERSION="536" -D_RTE_ -DMKL05Z32xxx4 -D_RTE_-o ./objects/lcd1602.o -MD)
+I (lcd1602.h)(0x5FC545E6)
+I (frdm_bsp.h)(0x67057814)
+I (C:\Users\Kacper\AppData\Local\Arm\Packs\Keil\Kinetis_KLxx_DFP\1.15.1\Device\Include\MKL05Z4.h)(0x585BD06A)
+I (C:\Users\Kacper\AppData\Local\Arm\Packs\ARM\CMSIS\6.1.0\CMSIS\Core\Include\core_cm0plus.h)(0x664C2CE8)
+I (C:\Keil_v5\ARM\ARMCLANG\include\stdint.h)(0x60355C30)
+I (C:\Users\Kacper\AppData\Local\Arm\Packs\ARM\CMSIS\6.1.0\CMSIS\Core\Include\cmsis_version.h)(0x664C2CE8)
+I (C:\Users\Kacper\AppData\Local\Arm\Packs\ARM\CMSIS\6.1.0\CMSIS\Core\Include\cmsis_compiler.h)(0x664C2CE8)
+I (C:\Users\Kacper\AppData\Local\Arm\Packs\ARM\CMSIS\6.1.0\CMSIS\Core\Include\cmsis_armclang.h)(0x664C2CE8)
+I (C:\Keil_v5\ARM\ARMCLANG\include\arm_acle.h)(0x60355C24)
+I (C:\Users\Kacper\AppData\Local\Arm\Packs\ARM\CMSIS\6.1.0\CMSIS\Core\Include\m-profile\cmsis_armclang_m.h)(0x664C2CE8)
+I (C:\Users\Kacper\AppData\Local\Arm\Packs\Keil\Kinetis_KLxx_DFP\1.15.1\Device\Include\system_MKL05Z4.h)(0x55FBBCD8)
+I (i2c.h)(0x5FBFDF5A)
+F (.\spi.c)(0x67816C49)(-xc -std=c99 --target=arm-arm-none-eabi -mcpu=cortex-m0plus -c-fno-rtti -funsigned-char -fshort-enums -fshort-wchar-D__EVAL -gdwarf-4 -O1 -ffunction-sections -Weverything -Wno-packed -Wno-reserved-id-macro -Wno-unused-macros -Wno-documentation-unknown-command -Wno-documentation -Wno-license-management -Wno-parentheses-equality -I./RTE/_FRDM-KL05ZJ-IC:/Users/Kacper/AppData/Local/Arm/Packs/ARM/CMSIS/6.1.0/CMSIS/Core/Include-IC:/Users/Kacper/AppData/Local/Arm/Packs/Keil/Kinetis_KLxx_DFP/1.15.1/Device/Include-D__UVISION_VERSION="536" -D_RTE_ -DMKL05Z32xxx4 -D_RTE_-o ./objects/spi.o -MD)
+I (spi.h)(0x67817138)
+I (C:\Keil_v5\ARM\ARMCLANG\include\stdint.h)(0x60355C30)
+I (C:\Users\Kacper\AppData\Local\Arm\Packs\Keil\Kinetis_KLxx_DFP\1.15.1\Device\Include\MKL05Z4.h)(0x585BD06A)
+I (C:\Users\Kacper\AppData\Local\Arm\Packs\ARM\CMSIS\6.1.0\CMSIS\Core\Include\core_cm0plus.h)(0x664C2CE8)
+I (C:\Users\Kacper\AppData\Local\Arm\Packs\ARM\CMSIS\6.1.0\CMSIS\Core\Include\cmsis_version.h)(0x664C2CE8)
+I (C:\Users\Kacper\AppData\Local\Arm\Packs\ARM\CMSIS\6.1.0\CMSIS\Core\Include\cmsis_compiler.h)(0x664C2CE8)
+I (C:\Users\Kacper\AppData\Local\Arm\Packs\ARM\CMSIS\6.1.0\CMSIS\Core\Include\cmsis_armclang.h)(0x664C2CE8)
+I (C:\Keil_v5\ARM\ARMCLANG\include\arm_acle.h)(0x60355C24)
+I (C:\Users\Kacper\AppData\Local\Arm\Packs\ARM\CMSIS\6.1.0\CMSIS\Core\Include\m-profile\cmsis_armclang_m.h)(0x664C2CE8)
+I (C:\Users\Kacper\AppData\Local\Arm\Packs\Keil\Kinetis_KLxx_DFP\1.15.1\Device\Include\system_MKL05Z4.h)(0x55FBBCD8)
+I (C:\Keil_v5\ARM\ARMCLANG\include\stdbool.h)(0x60355C2A)
+F (.\mfrc522.c)(0x67816A74)(-xc -std=c99 --target=arm-arm-none-eabi -mcpu=cortex-m0plus -c-fno-rtti -funsigned-char -fshort-enums -fshort-wchar-D__EVAL -gdwarf-4 -O1 -ffunction-sections -Weverything -Wno-packed -Wno-reserved-id-macro -Wno-unused-macros -Wno-documentation-unknown-command -Wno-documentation -Wno-license-management -Wno-parentheses-equality -I./RTE/_FRDM-KL05ZJ-IC:/Users/Kacper/AppData/Local/Arm/Packs/ARM/CMSIS/6.1.0/CMSIS/Core/Include-IC:/Users/Kacper/AppData/Local/Arm/Packs/Keil/Kinetis_KLxx_DFP/1.15.1/Device/Include-D__UVISION_VERSION="536" -D_RTE_ -DMKL05Z32xxx4 -D_RTE_-o ./objects/mfrc522.o -MD)
+I (mfrc522.h)(0x677FB8E4)
+I (C:\Keil_v5\ARM\ARMCLANG\include\stdint.h)(0x60355C30)
+I (spi.h)(0x67817138)
+I (C:\Users\Kacper\AppData\Local\Arm\Packs\Keil\Kinetis_KLxx_DFP\1.15.1\Device\Include\MKL05Z4.h)(0x585BD06A)
+I (C:\Users\Kacper\AppData\Local\Arm\Packs\ARM\CMSIS\6.1.0\CMSIS\Core\Include\core_cm0plus.h)(0x664C2CE8)
+I (C:\Users\Kacper\AppData\Local\Arm\Packs\ARM\CMSIS\6.1.0\CMSIS\Core\Include\cmsis_version.h)(0x664C2CE8)
+I (C:\Users\Kacper\AppData\Local\Arm\Packs\ARM\CMSIS\6.1.0\CMSIS\Core\Include\cmsis_compiler.h)(0x664C2CE8)
+I (C:\Users\Kacper\AppData\Local\Arm\Packs\ARM\CMSIS\6.1.0\CMSIS\Core\Include\cmsis_armclang.h)(0x664C2CE8)
+I (C:\Keil_v5\ARM\ARMCLANG\include\arm_acle.h)(0x60355C24)
+I (C:\Users\Kacper\AppData\Local\Arm\Packs\ARM\CMSIS\6.1.0\CMSIS\Core\Include\m-profile\cmsis_armclang_m.h)(0x664C2CE8)
+I (C:\Users\Kacper\AppData\Local\Arm\Packs\Keil\Kinetis_KLxx_DFP\1.15.1\Device\Include\system_MKL05Z4.h)(0x55FBBCD8)
+F (.\mfrc522.h)(0x677FB8E4)()
+F (.\rfid.c)(0x6787951E)(-xc -std=c99 --target=arm-arm-none-eabi -mcpu=cortex-m0plus -c-fno-rtti -funsigned-char -fshort-enums -fshort-wchar-D__EVAL -gdwarf-4 -O1 -ffunction-sections -Weverything -Wno-packed -Wno-reserved-id-macro -Wno-unused-macros -Wno-documentation-unknown-command -Wno-documentation -Wno-license-management -Wno-parentheses-equality -I./RTE/_FRDM-KL05ZJ-IC:/Users/Kacper/AppData/Local/Arm/Packs/ARM/CMSIS/6.1.0/CMSIS/Core/Include-IC:/Users/Kacper/AppData/Local/Arm/Packs/Keil/Kinetis_KLxx_DFP/1.15.1/Device/Include-D__UVISION_VERSION="536" -D_RTE_ -DMKL05Z32xxx4 -D_RTE_-o ./objects/rfid.o -MD)
+I (rfid.h)(0x6781E0DB)
+I (C:\Keil_v5\ARM\ARMCLANG\include\stdint.h)(0x60355C30)
+I (C:\Users\Kacper\AppData\Local\Arm\Packs\Keil\Kinetis_KLxx_DFP\1.15.1\Device\Include\MKL05Z4.h)(0x585BD06A)
+I (C:\Users\Kacper\AppData\Local\Arm\Packs\ARM\CMSIS\6.1.0\CMSIS\Core\Include\core_cm0plus.h)(0x664C2CE8)
+I (C:\Users\Kacper\AppData\Local\Arm\Packs\ARM\CMSIS\6.1.0\CMSIS\Core\Include\cmsis_version.h)(0x664C2CE8)
+I (C:\Users\Kacper\AppData\Local\Arm\Packs\ARM\CMSIS\6.1.0\CMSIS\Core\Include\cmsis_compiler.h)(0x664C2CE8)
+I (C:\Users\Kacper\AppData\Local\Arm\Packs\ARM\CMSIS\6.1.0\CMSIS\Core\Include\cmsis_armclang.h)(0x664C2CE8)
+I (C:\Keil_v5\ARM\ARMCLANG\include\arm_acle.h)(0x60355C24)
+I (C:\Users\Kacper\AppData\Local\Arm\Packs\ARM\CMSIS\6.1.0\CMSIS\Core\Include\m-profile\cmsis_armclang_m.h)(0x664C2CE8)
+I (C:\Users\Kacper\AppData\Local\Arm\Packs\Keil\Kinetis_KLxx_DFP\1.15.1\Device\Include\system_MKL05Z4.h)(0x55FBBCD8)
+I (spi.h)(0x67817138)
+F (.\rfid.h)(0x6781E0DB)()
+F (.\users.h)(0x6781E262)()
+F (.\users.c)(0x67879465)(-xc -std=c99 --target=arm-arm-none-eabi -mcpu=cortex-m0plus -c-fno-rtti -funsigned-char -fshort-enums -fshort-wchar-D__EVAL -gdwarf-4 -O1 -ffunction-sections -Weverything -Wno-packed -Wno-reserved-id-macro -Wno-unused-macros -Wno-documentation-unknown-command -Wno-documentation -Wno-license-management -Wno-parentheses-equality -I./RTE/_FRDM-KL05ZJ-IC:/Users/Kacper/AppData/Local/Arm/Packs/ARM/CMSIS/6.1.0/CMSIS/Core/Include-IC:/Users/Kacper/AppData/Local/Arm/Packs/Keil/Kinetis_KLxx_DFP/1.15.1/Device/Include-D__UVISION_VERSION="536" -D_RTE_ -DMKL05Z32xxx4 -D_RTE_-o ./objects/users.o -MD)
+I (users.h)(0x6781E262)
+I (C:\Keil_v5\ARM\ARMCLANG\include\stdint.h)(0x60355C30)
+I (C:\Users\Kacper\AppData\Local\Arm\Packs\Keil\Kinetis_KLxx_DFP\1.15.1\Device\Include\MKL05Z4.h)(0x585BD06A)
+I (C:\Users\Kacper\AppData\Local\Arm\Packs\ARM\CMSIS\6.1.0\CMSIS\Core\Include\core_cm0plus.h)(0x664C2CE8)
+I (C:\Users\Kacper\AppData\Local\Arm\Packs\ARM\CMSIS\6.1.0\CMSIS\Core\Include\cmsis_version.h)(0x664C2CE8)
+I (C:\Users\Kacper\AppData\Local\Arm\Packs\ARM\CMSIS\6.1.0\CMSIS\Core\Include\cmsis_compiler.h)(0x664C2CE8)
+I (C:\Users\Kacper\AppData\Local\Arm\Packs\ARM\CMSIS\6.1.0\CMSIS\Core\Include\cmsis_armclang.h)(0x664C2CE8)
+I (C:\Keil_v5\ARM\ARMCLANG\include\arm_acle.h)(0x60355C24)
+I (C:\Users\Kacper\AppData\Local\Arm\Packs\ARM\CMSIS\6.1.0\CMSIS\Core\Include\m-profile\cmsis_armclang_m.h)(0x664C2CE8)
+I (C:\Users\Kacper\AppData\Local\Arm\Packs\Keil\Kinetis_KLxx_DFP\1.15.1\Device\Include\system_MKL05Z4.h)(0x55FBBCD8)
+I (lcd1602.h)(0x5FC545E6)
+I (frdm_bsp.h)(0x67057814)
+I (i2c.h)(0x5FBFDF5A)
+I (rooms.h)(0x6781E0D6)
+I (C:\Keil_v5\ARM\ARMCLANG\include\stdio.h)(0x60355C34)
+I (C:\Keil_v5\ARM\ARMCLANG\include\string.h)(0x60355C30)
+I (C:\Keil_v5\ARM\ARMCLANG\include\stdlib.h)(0x60355C30)
+F (.\rooms.h)(0x6781E0D6)()
+F (.\rooms.c)(0x6787935D)(-xc -std=c99 --target=arm-arm-none-eabi -mcpu=cortex-m0plus -c-fno-rtti -funsigned-char -fshort-enums -fshort-wchar-D__EVAL -gdwarf-4 -O1 -ffunction-sections -Weverything -Wno-packed -Wno-reserved-id-macro -Wno-unused-macros -Wno-documentation-unknown-command -Wno-documentation -Wno-license-management -Wno-parentheses-equality -I./RTE/_FRDM-KL05ZJ-IC:/Users/Kacper/AppData/Local/Arm/Packs/ARM/CMSIS/6.1.0/CMSIS/Core/Include-IC:/Users/Kacper/AppData/Local/Arm/Packs/Keil/Kinetis_KLxx_DFP/1.15.1/Device/Include-D__UVISION_VERSION="536" -D_RTE_ -DMKL05Z32xxx4 -D_RTE_-o ./objects/rooms.o -MD)
+I (rooms.h)(0x6781E0D6)
+I (C:\Keil_v5\ARM\ARMCLANG\include\stdint.h)(0x60355C30)
+I (C:\Users\Kacper\AppData\Local\Arm\Packs\Keil\Kinetis_KLxx_DFP\1.15.1\Device\Include\MKL05Z4.h)(0x585BD06A)
+I (C:\Users\Kacper\AppData\Local\Arm\Packs\ARM\CMSIS\6.1.0\CMSIS\Core\Include\core_cm0plus.h)(0x664C2CE8)
+I (C:\Users\Kacper\AppData\Local\Arm\Packs\ARM\CMSIS\6.1.0\CMSIS\Core\Include\cmsis_version.h)(0x664C2CE8)
+I (C:\Users\Kacper\AppData\Local\Arm\Packs\ARM\CMSIS\6.1.0\CMSIS\Core\Include\cmsis_compiler.h)(0x664C2CE8)
+I (C:\Users\Kacper\AppData\Local\Arm\Packs\ARM\CMSIS\6.1.0\CMSIS\Core\Include\cmsis_armclang.h)(0x664C2CE8)
+I (C:\Keil_v5\ARM\ARMCLANG\include\arm_acle.h)(0x60355C24)
+I (C:\Users\Kacper\AppData\Local\Arm\Packs\ARM\CMSIS\6.1.0\CMSIS\Core\Include\m-profile\cmsis_armclang_m.h)(0x664C2CE8)
+I (C:\Users\Kacper\AppData\Local\Arm\Packs\Keil\Kinetis_KLxx_DFP\1.15.1\Device\Include\system_MKL05Z4.h)(0x55FBBCD8)
+I (C:\Keil_v5\ARM\ARMCLANG\include\stdlib.h)(0x60355C30)
+I (C:\Keil_v5\ARM\ARMCLANG\include\stdio.h)(0x60355C34)
+F (.\main.h)(0x6781E17C)()
+F (RTE\Device\MKL05Z32xxx4\startup_MKL05Z4.s)(0x55FBBCD8)(--target=arm-arm-none-eabi -mcpu=cortex-m0plus -masm=auto -c-gdwarf-4 -Wa,armasm,--pd,"__EVAL SETA 1"-I./RTE/_FRDM-KL05ZJ-IC:/Users/Kacper/AppData/Local/Arm/Packs/ARM/CMSIS/6.1.0/CMSIS/Core/Include-IC:/Users/Kacper/AppData/Local/Arm/Packs/Keil/Kinetis_KLxx_DFP/1.15.1/Device/Include-Wa,armasm,--pd,"__UVISION_VERSION SETA 536" -Wa,armasm,--pd,"_RTE_ SETA 1" -Wa,armasm,--pd,"MKL05Z32xxx4 SETA 1" -Wa,armasm,--pd,"_RTE_ SETA 1"-o ./objects/startup_mkl05z4.o)
+F (RTE\Device\MKL05Z32xxx4\system_MKL05Z4.c)(0x678173EA)(-xc -std=c99 --target=arm-arm-none-eabi -mcpu=cortex-m0plus -c-fno-rtti -funsigned-char -fshort-enums -fshort-wchar-D__EVAL -gdwarf-4 -O1 -ffunction-sections -Weverything -Wno-packed -Wno-reserved-id-macro -Wno-unused-macros -Wno-documentation-unknown-command -Wno-documentation -Wno-license-management -Wno-parentheses-equality -I./RTE/_FRDM-KL05ZJ-IC:/Users/Kacper/AppData/Local/Arm/Packs/ARM/CMSIS/6.1.0/CMSIS/Core/Include-IC:/Users/Kacper/AppData/Local/Arm/Packs/Keil/Kinetis_KLxx_DFP/1.15.1/Device/Include-D__UVISION_VERSION="536" -D_RTE_ -DMKL05Z32xxx4 -D_RTE_-o ./objects/system_mkl05z4.o -MD)
+I (C:\Keil_v5\ARM\ARMCLANG\include\stdint.h)(0x60355C30)
+I (C:\Users\Kacper\AppData\Local\Arm\Packs\Keil\Kinetis_KLxx_DFP\1.15.1\Device\Include\MKL05Z4.h)(0x585BD06A)
+I (C:\Users\Kacper\AppData\Local\Arm\Packs\ARM\CMSIS\6.1.0\CMSIS\Core\Include\core_cm0plus.h)(0x664C2CE8)
+I (C:\Users\Kacper\AppData\Local\Arm\Packs\ARM\CMSIS\6.1.0\CMSIS\Core\Include\cmsis_version.h)(0x664C2CE8)
+I (C:\Users\Kacper\AppData\Local\Arm\Packs\ARM\CMSIS\6.1.0\CMSIS\Core\Include\cmsis_compiler.h)(0x664C2CE8)
+I (C:\Users\Kacper\AppData\Local\Arm\Packs\ARM\CMSIS\6.1.0\CMSIS\Core\Include\cmsis_armclang.h)(0x664C2CE8)
+I (C:\Keil_v5\ARM\ARMCLANG\include\arm_acle.h)(0x60355C24)
+I (C:\Users\Kacper\AppData\Local\Arm\Packs\ARM\CMSIS\6.1.0\CMSIS\Core\Include\m-profile\cmsis_armclang_m.h)(0x664C2CE8)
+I (C:\Users\Kacper\AppData\Local\Arm\Packs\Keil\Kinetis_KLxx_DFP\1.15.1\Device\Include\system_MKL05Z4.h)(0x55FBBCD8)

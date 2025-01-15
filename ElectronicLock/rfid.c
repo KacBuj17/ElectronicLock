@@ -2,85 +2,22 @@
 #include "spi.h"
 #include "MKL05Z4.h"
 
-#define MFRC522_SPI_SPEED 1000000 // 1 MHz
+#define MFRC522_SPI_SPEED 1000000
 
-// Funkcja do zapisu do rejestru MFRC522
-void Write_MFRC522(uint8_t addr, uint8_t val) 
-{
-    PTA->PCOR = (1 << MFRC522_CS_PIN);             // CS LOW
-
-    spi_master_write((addr << 1) & 0x7E);
-    spi_master_write(val);
-
-    // Ustawienie CS w stan wysoki
-    PTA->PSOR = (1 << MFRC522_CS_PIN);             // CS HIGH
-}
-
-// Funkcja do odczytu z rejestru MFRC522
-uint8_t Read_MFRC522(uint8_t addr) 
-{
-    PTA->PCOR = (1 << MFRC522_CS_PIN);             // CS LOW
-
-    spi_master_write(((addr << 1) & 0x7E) | 0x80);
-    uchar val = spi_master_write(0x00);
-
-    // Ustawienie CS w stan wysoki
-    PTA->PSOR = (1 << MFRC522_CS_PIN);             // CS HIGH
-
-    return val;
-}
-
-// Funkcja do ustawienia maski bitowej w rejestrze MFRC522
-void SetBitMask(uint8_t reg, uint8_t mask) 
-{
-		uchar tmp = Read_MFRC522(reg);
-    Write_MFRC522(reg, tmp | mask);
-} 
-
-// Funkcja do usuniêcia maski bitowej w rejestrze MFRC522
-void ClearBitMask(uint8_t reg, uint8_t mask) 
-{
-    uchar tmp = Read_MFRC522(reg);
-    Write_MFRC522(reg, tmp & (~mask));
-}
-
-// Funkcja do w³¹czenia anteny MFRC522
-void AntennaOn(void) 
-{
-		Read_MFRC522(TxControlReg);
-    SetBitMask(TxControlReg, 0x03);
-}
-
-// Funkcja do wy³¹czenia anteny MFRC522
-void AntennaOff(void) 
-{
-    ClearBitMask(TxControlReg, 0x03);
-}
-
-// Funkcja do resetowania modu³u MFRC522
-void MFRC522_Reset(void) 
-{
-    Write_MFRC522(CommandReg, PCD_RESETPHASE);
-}
-
-// Funkcja inicjalizuj¹ca MFRC522
 void MFRC522_Init(void) 
 {
 		spi_init(SPI_MODE_0, MFRC522_SPI_SPEED, SPI_SIDE_MASTER);
 	
-    // Konfiguracja CS jako GPIO i ustawienie stanu wysokiego
-    PORTA->PCR[MFRC522_CS_PIN] = PORT_PCR_MUX(1);  // Ustaw PTA4 jako GPIO
-    PTA->PDDR |= (1 << MFRC522_CS_PIN);            // Ustaw PTA4 jako wyjœcie
-    PTA->PSOR = (1 << MFRC522_CS_PIN);             // CS HIGH
-
-    // Konfiguracja RST jako GPIO i ustawienie stanu wysokiego
-    PORTA->PCR[MFRC522_RST_PIN] = PORT_PCR_MUX(1);  // Ustaw PTA1 jako GPIO
-    PTA->PDDR |= (1 << MFRC522_RST_PIN);            // Ustaw PTA1 jako wyjœcie
-    PTA->PSOR = (1 << MFRC522_RST_PIN);             // RESET HIGH
+    PORTA->PCR[MFRC522_CS_PIN] = PORT_PCR_MUX(1);
+    PTA->PDDR |= (1 << MFRC522_CS_PIN);
+    PTA->PSOR = (1 << MFRC522_CS_PIN);
+	
+    PORTA->PCR[MFRC522_RST_PIN] = PORT_PCR_MUX(1);
+    PTA->PDDR |= (1 << MFRC522_RST_PIN);
+    PTA->PSOR = (1 << MFRC522_RST_PIN);
 
     MFRC522_Reset();
 
-    // Inicjalizacja modu³u
     Write_MFRC522(TModeReg, 0x8D);       // Tauto=1; f(Timer) = 6.78MHz/TPreScaler
     Write_MFRC522(TPrescalerReg, 0x3E); // TModeReg[3..0] + TPrescalerReg
     Write_MFRC522(TReloadRegL, 30);
@@ -90,6 +27,56 @@ void MFRC522_Init(void)
     Write_MFRC522(ModeReg, 0x3D);       // CRC Initial value 0x6363
 
     AntennaOn();
+}
+
+void Write_MFRC522(uint8_t addr, uint8_t val) 
+{
+    PTA->PCOR = (1 << MFRC522_CS_PIN);
+
+    spi_master_write((addr << 1) & 0x7E);
+    spi_master_write(val);
+
+    PTA->PSOR = (1 << MFRC522_CS_PIN);
+}
+
+uint8_t Read_MFRC522(uint8_t addr) 
+{
+    PTA->PCOR = (1 << MFRC522_CS_PIN);
+
+    spi_master_write(((addr << 1) & 0x7E) | 0x80);
+    uchar val = spi_master_write(0x00);
+
+    PTA->PSOR = (1 << MFRC522_CS_PIN);
+
+    return val;
+}
+
+void SetBitMask(uint8_t reg, uint8_t mask) 
+{
+		uchar tmp = Read_MFRC522(reg);
+    Write_MFRC522(reg, tmp | mask);
+} 
+
+void ClearBitMask(uint8_t reg, uint8_t mask) 
+{
+    uchar tmp = Read_MFRC522(reg);
+    Write_MFRC522(reg, tmp & (~mask));
+}
+
+void AntennaOn(void) 
+{
+		Read_MFRC522(TxControlReg);
+    SetBitMask(TxControlReg, 0x03);
+}
+
+void AntennaOff(void) 
+{
+    ClearBitMask(TxControlReg, 0x03);
+}
+
+void MFRC522_Reset(void) 
+{
+    Write_MFRC522(CommandReg, PCD_RESETPHASE);
 }
 
 uchar MFRC522_ToCard(uchar command, uchar *sendData, uchar sendLen, uchar *backData, uint *backLen)
@@ -249,12 +236,6 @@ uchar MFRC522_Anticoll(uchar *serNum)
     return status;
 }
 
-/*
- * Function Name: CalulateCRC
- * Description: CRC calculation with MF522
- * Input parameters: pIndata - To read the CRC data, len - the data length, pOutData - CRC calculation results
- * Return value: None
- */
 void CalulateCRC(uchar *pIndata, uchar len, uchar *pOutData)
 {
     uchar i, n;

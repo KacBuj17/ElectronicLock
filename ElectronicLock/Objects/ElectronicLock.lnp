@@ -4,7 +4,6 @@
 ".\objects\klaw.o"
 ".\objects\lcd1602.o"
 ".\objects\spi.o"
-".\objects\mfrc522.o"
 ".\objects\rfid.o"
 ".\objects\users.o"
 ".\objects\rooms.o"

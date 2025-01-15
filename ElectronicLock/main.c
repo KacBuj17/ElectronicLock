@@ -21,10 +21,10 @@ void PORTA_IRQHandler(void)
     {
     case S2_MASK:
         DELAY(100)
-        if (!(PTA->PDIR & S2_MASK)) // Minimalizacja drgañ zestyków
+        if (!(PTA->PDIR & S2_MASK))
         {
             DELAY(100)
-            if (!(PTA->PDIR & S2_MASK)) // Minimalizacja drgañ zestyków (c.d.)
+            if (!(PTA->PDIR & S2_MASK))
             {
                 if (!S2_press)
                 {
@@ -35,10 +35,10 @@ void PORTA_IRQHandler(void)
         break;
     case S3_MASK:
         DELAY(100)
-        if (!(PTA->PDIR & S3_MASK)) // Minimalizacja drgañ zestyków
+        if (!(PTA->PDIR & S3_MASK))
         {
             DELAY(100)
-            if (!(PTA->PDIR & S3_MASK)) // Minimalizacja drgañ zestyków (c.d.)
+            if (!(PTA->PDIR & S3_MASK))
             {
                 if (!S3_press)
                 {
@@ -49,10 +49,10 @@ void PORTA_IRQHandler(void)
         break;
     case S4_MASK:
 				DELAY(100)
-        if (!(PTA->PDIR & S4_MASK)) // Minimalizacja drgañ zestyków
+        if (!(PTA->PDIR & S4_MASK))
         {
             DELAY(100)
-            if (!(PTA->PDIR & S4_MASK)) // Minimalizacja drgañ zestyków (c.d.)
+            if (!(PTA->PDIR & S4_MASK))
             {
                 if (!S4_press)
 								{
@@ -64,20 +64,17 @@ void PORTA_IRQHandler(void)
     default:
         break;
     }
-    PORTA->ISFR |= S2_MASK | S3_MASK | S4_MASK; // Kasowanie wszystkich bitów ISF
+    PORTA->ISFR |= S2_MASK | S3_MASK | S4_MASK;
     NVIC_ClearPendingIRQ(PORTA_IRQn);
 }
 
 void handleUsersAdministrate()
 {
-    uint32_t timeout = 5000;
-    uint32_t start = SysTick->VAL;
-
     LCD1602_ClearAll();
     LCD1602_SetCursor(0, 0);
     LCD1602_Print("Waiting for card");
 
-    while ((SysTick->VAL - start) < timeout)
+    while (1)
     {
         status = MFRC522_Request(PICC_REQIDL, str);
         if (status == MI_OK)

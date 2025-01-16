@@ -26,8 +26,7 @@ extern volatile uint8_t S2_press;
 extern volatile uint8_t S3_press;
 extern volatile uint8_t S4_press;
 
-extern volatile uint8_t sekunda;
-extern volatile uint8_t sekunda_OK;
+extern volatile uint8_t seccond;
 
 extern volatile uint8_t display_message;
 extern volatile uint32_t message_timer;

@@ -4,8 +4,7 @@ volatile uint8_t S2_press = 0;
 volatile uint8_t S3_press = 0;
 volatile uint8_t S4_press = 0;
 
-volatile uint8_t sekunda = 0;
-volatile uint8_t sekunda_OK = 0;
+volatile uint8_t seccond = 0;
 
 volatile uint8_t display_message = 0;
 volatile uint32_t message_timer = 0;
@@ -16,19 +15,16 @@ volatile uint32_t card_detection_timer = 0;
 volatile uint8_t door_opened = 0;
 volatile uint32_t door_timer = 0;
 
-static uchar auth_status;
-static uchar status;
 static uchar cardID[4];
 static uchar str[UID_LENGTH];
 static char uid_str[UID_LENGTH];
 
 void SysTick_Handler(void)
 { 
-    sekunda++;
-    if (sekunda == 10)
+    seccond++;
+    if (seccond == 10)
     {
-        sekunda = 0;
-        sekunda_OK = 1;
+        seccond = 0;
 
         if (display_message && message_timer > 0)
         {
@@ -157,7 +153,7 @@ void handleUsersAdministrate()
 	
     while (card_detection)
     {
-        status = MFRC522_Request(PICC_REQIDL, str);
+        uchar status = MFRC522_Request(PICC_REQIDL, str);
         if (status == MI_OK)
         {
             status = MFRC522_Anticoll(cardID);
@@ -184,7 +180,7 @@ void handleUsersAdministrate()
 
 uchar handleReadRfidUID()
 {
-		status = MFRC522_Request(PICC_REQIDL, str);
+		uchar status = MFRC522_Request(PICC_REQIDL, str);
 		if(status == MI_OK)
 		{
 				status = MFRC522_Anticoll(cardID);
@@ -200,7 +196,7 @@ uchar handleReadRfidUID()
 
 void handleRfidAccess()
 {
-		auth_status = handleReadRfidUID();
+		uchar auth_status = handleReadRfidUID();
 		if(auth_status == 0)
 		{
 				displayMessageWithTimeout("", "ACCESS GRANTED", DOOR_OPEN_S);

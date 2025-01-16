@@ -1,19 +1,19 @@
 #include "main.h"
 
-volatile uint8_t S2_press = 0;
-volatile uint8_t S3_press = 0;
-volatile uint8_t S4_press = 0;
+static uint8_t S2_press = 0;
+static uint8_t S3_press = 0;
+static uint8_t S4_press = 0;
 
-volatile uint8_t seccond = 0;
+static uint8_t seccond = 0;
 
-volatile uint8_t display_message = 0;
-volatile uint32_t message_timer = 0;
+static uint8_t display_message = 0;
+static uint32_t message_timer = 0;
 
-volatile uint8_t card_detection = 0;
-volatile uint32_t card_detection_timer = 0;
+static uint8_t card_detection = 0;
+static uint32_t card_detection_timer = 0;
 
-volatile uint8_t door_opened = 0;
-volatile uint32_t door_timer = 0;
+static uint8_t door_opened = 0;
+static uint32_t door_timer = 0;
 
 static uchar cardID[4];
 static uchar str[UID_LENGTH];

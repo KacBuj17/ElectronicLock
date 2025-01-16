@@ -1,6 +1,6 @@
 #include "users.h"
 
-char assignedUsers[MAX_ROOMS][MAX_USERS_PER_ROOM][UID_LENGTH] = {{{0}}};
+static char assignedUsers[MAX_ROOMS][MAX_USERS_PER_ROOM][UID_LENGTH] = {{{0}}};
 
 int8_t isUserInRoom(char *room, char *uid)
 {

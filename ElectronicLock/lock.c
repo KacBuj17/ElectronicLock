@@ -1,6 +1,6 @@
 #include "lock.h"
 
-void lockInit()
+void LockInit()
 {
 		PORTA->PCR[lockPin] = PORT_PCR_MUX(1);
     PTA->PDDR |= (1 << lockPin);

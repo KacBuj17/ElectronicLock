@@ -5,7 +5,7 @@
 
 #define lockPin 5
 
-void lockInit(void);
+void LockInit(void);
 void doorOpen(void);
 void doorClose(void);
 

@@ -1,16 +1,8 @@
 #include "main.h"
 
-#define DEBOUNCE_DELAY_MS 100
-#define DOOR_OPEN_S 2
-
 volatile uint8_t S2_press = 0;
 volatile uint8_t S3_press = 0;
 volatile uint8_t S4_press = 0;
-
-static uchar status;
-static uchar str[UID_LENGTH];
-static uchar cardID[4];
-static char uid_str[UID_LENGTH];
 
 volatile uint8_t sekunda = 0;
 volatile uint8_t sekunda_OK = 0;
@@ -18,8 +10,17 @@ volatile uint8_t sekunda_OK = 0;
 volatile uint8_t display_message = 0;
 volatile uint32_t message_timer = 0;
 
+volatile uint8_t card_detection = 0;
+volatile uint32_t card_detection_timer = 0;
+
 volatile uint8_t door_opened = 0;
 volatile uint32_t door_timer = 0;
+
+static uchar auth_status;
+static uchar status;
+static uchar cardID[4];
+static uchar str[UID_LENGTH];
+static char uid_str[UID_LENGTH];
 
 void SysTick_Handler(void)
 { 
@@ -47,24 +48,47 @@ void SysTick_Handler(void)
 							  doorClose();
             }
         }
+				
+				if (card_detection && card_detection_timer > 0)
+        {
+            card_detection_timer--;
+            if (card_detection_timer == 0)
+            {
+                card_detection = 0;
+            }
+        }
     }
 }
 
 void displayMessageWithTimeout(char* line1, char* line2, uint8_t timeout_seconds)
 {
-		if (line1)
-    {
+		if(line1)
+		{
 				LCD1602_SetCursor(0, 0);
 				LCD1602_Print(line1);
-    }
-    if (line2)
-    {
-        LCD1602_SetCursor(0, 1);
-        LCD1602_Print(line2);
-    }
+		}
+		if(line2)
+		{
+				LCD1602_SetCursor(0, 1);
+				LCD1602_Print(line2);
+		}
 
     display_message = 1;
     message_timer = timeout_seconds;
+}
+
+void displayMessage(char* line1, char* line2)
+{
+		if(line1)
+		{
+				LCD1602_SetCursor(0, 0);
+				LCD1602_Print(line1);
+		}
+		if(line2)
+		{
+				LCD1602_SetCursor(0, 1);
+				LCD1602_Print(line2);
+		}
 }
 
 void PORTA_IRQHandler(void)
@@ -126,10 +150,12 @@ void PORTA_IRQHandler(void)
 void handleUsersAdministrate()
 {
     LCD1602_ClearAll();
-    LCD1602_SetCursor(0, 0);
-    LCD1602_Print("Waiting for card");
-
-    while (1)
+		displayMessage("Waiting for card", "");
+	
+		card_detection = 1;
+		card_detection_timer = DETECTION_TIMEOUT;
+	
+    while (card_detection)
     {
         status = MFRC522_Request(PICC_REQIDL, str);
         if (status == MI_OK)
@@ -156,7 +182,7 @@ void handleUsersAdministrate()
     }
 }
 
-void handleRfidAccess()
+uchar handleReadRfidUID()
 {
 		status = MFRC522_Request(PICC_REQIDL, str);
 		if(status == MI_OK)
@@ -165,75 +191,86 @@ void handleRfidAccess()
 				if(status == MI_OK)
 				{
 						sprintf(uid_str,"0x%x0x%x0x%x0x%x",cardID[0],cardID[1],cardID[2],cardID[3]);
-						if(isUserInRoom(current_room, uid_str))
-						{
-								displayMessageWithTimeout("" , "ACCESS GRANTED", 2);
-								doorOpen();
-								door_opened = 1;
-								door_timer = DOOR_OPEN_S;
-						}
-						else
-						{
-								displayMessageWithTimeout("" , "ACCESS DENIED ", 2);
-						}
+						return isUserInRoom(current_room, uid_str) ? ACCESS_GRANTED : ACCESS_DENIED;
 				}
-				else
-				{
-						displayMessageWithTimeout("", "RFID ERROR   ", 2);
-				}
+				return RFID_ERROR;
+		}
+		return CARD_NOT_DETECTED;
+}
+
+void handleRfidAccess()
+{
+		auth_status = handleReadRfidUID();
+		if(auth_status == 0)
+		{
+				displayMessageWithTimeout("", "ACCESS GRANTED", DOOR_OPEN_S);
+				doorOpen();
+				door_opened = 1;
+				door_timer = DOOR_OPEN_S;
+		}
+		else if(auth_status == 1)
+		{
+				displayMessageWithTimeout("", "ACCESS DENIED ", DOOR_OPEN_S);
+		}
+		else if(auth_status == 2)
+		{
+				displayMessageWithTimeout("", "RFID ERROR   ", DOOR_OPEN_S);
+		}
+}
+
+void handleButtonsPressed()
+{
+		if (S2_press) 
+		{
+				display_message = 0;
+				switchRoomDown();
+				S2_press = 0;
+		}
+		if (S3_press) 
+		{
+				display_message = 0;
+				switchRoomUp();
+				S3_press = 0;
+		}
+		if (S4_press) 
+		{
+				display_message = 0;
+				handleUsersAdministrate();
+				S4_press = 0;
 		}
 }
 
 int main(void)
 {
     MFRC522_Init();
+	
     Klaw_Init();
     Klaw_S2_4_Int();
-		lockInit();
+	
+		LockInit();
+	
     LCD1602_Init();
     LCD1602_Backlight(TRUE);
-    LCD1602_ClearAll();
-
-    LCD1602_SetCursor(0, 0);
-    LCD1602_Print("Electronic Lock");
-    LCD1602_SetCursor(0, 1);
-    LCD1602_Print("Push S1 To Start");
+		LCD1602_ClearAll();
 	
 		SysTick_Config(SystemCoreClock/10);
+	
+		char buffer[16];
+	
+		displayMessage("Electronic Lock", "Push S1 To Start");
 
     while (PTA->PDIR & S1_MASK);
-    LCD1602_ClearAll();
-		char buffer[32];
-
+	
     while (1)
     {
         if (!display_message)
         {
-            LCD1602_ClearAll();
-            sprintf(buffer, "Current Room:%s", current_room);
-						LCD1602_SetCursor(0, 0);
-						LCD1602_Print(buffer);
+						LCD1602_ClearAll();
+						sprintf(buffer, "Current Room:%s", current_room);
+						displayMessage(buffer, "");
         }
 				
 				handleRfidAccess();
-			
-				if (S2_press) 
-				{
-						display_message = 0;
-						switchRoomDown();
-						S2_press = 0;
-				}
-				if (S3_press) 
-				{
-						display_message = 0;
-						switchRoomUp();
-						S3_press = 0;
-				}
-				if (S4_press) 
-				{
-						display_message = 0;
-						handleUsersAdministrate();
-						S4_press = 0;
-				}
+				handleButtonsPressed();
 		}
 }

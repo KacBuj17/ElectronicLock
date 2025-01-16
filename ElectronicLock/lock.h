@@ -3,20 +3,20 @@
 
 #include "MKL05Z4.h"
 
-#define lockPin 5
+#define lockPin 5 ///< GPIO pin controlling the lock mechanism.
 
 /**
- * @brief Inicjalizuje pin steruj¹cy zamkiem jako wyjœcie.
+ * @brief Initializes the lock control pin as an output.
  */
 void LockInit(void);
 
 /**
- * @brief Otwiera zamek, ustawiaj¹c odpowiedni pin na stan wysoki.
+ * @brief Opens the door by setting the lock pin to high.
  */
 void doorOpen(void);
 
 /**
- * @brief Zamyka zamek, ustawiaj¹c odpowiedni pin na stan niski.
+ * @brief Closes the door by setting the lock pin to low.
  */
 void doorClose(void);
 

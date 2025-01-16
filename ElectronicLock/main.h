@@ -13,58 +13,58 @@
 #include "klaw.h"
 #include "lock.h"
 
-#define DEBOUNCE_DELAY_MS 100
-#define DOOR_OPEN_S 2
-#define DETECTION_TIMEOUT 5
+#define DEBOUNCE_DELAY_MS 100 ///< Debounce delay for buttons in milliseconds.
+#define DOOR_OPEN_S 2         ///< Time in seconds for the door to remain open.
+#define DETECTION_TIMEOUT 5   ///< Timeout for card detection in seconds.
 
-#define ACCESS_GRANTED 0
-#define ACCESS_DENIED 1
-#define RFID_ERROR 2
-#define CARD_NOT_DETECTED 3
+#define ACCESS_GRANTED 0      ///< Status indicating access is granted.
+#define ACCESS_DENIED 1       ///< Status indicating access is denied.
+#define RFID_ERROR 2          ///< Status indicating an RFID error occurred.
+#define CARD_NOT_DETECTED 3   ///< Status indicating no card was detected.
 
 /**
- * @brief Obs³uguje przerwanie SysTick, zarz¹dza timerami i ich stanami.
+ * @brief SysTick interrupt handler for managing timers and state variables.
  */
 void SysTick_Handler(void);
 
 /**
- * @brief Wyœwietla komunikat na LCD z czasem wyœwietlania.
- * @param line1 Pierwsza linia komunikatu.
- * @param line2 Druga linia komunikatu.
- * @param timeout_seconds Czas wyœwietlania w sekundach.
+ * @brief Displays a message on the LCD with a timeout.
+ * @param line1 First line of the message.
+ * @param line2 Second line of the message.
+ * @param timeout_seconds Duration to display the message in seconds.
  */
 void displayMessageWithTimeout(char* line1, char* line2, uint8_t timeout_seconds);
 
 /**
- * @brief Wyœwietla komunikat na LCD bez limitu czasu.
- * @param line1 Pierwsza linia komunikatu.
- * @param line2 Druga linia komunikatu.
+ * @brief Displays a message on the LCD indefinitely.
+ * @param line1 First line of the message.
+ * @param line2 Second line of the message.
  */
 void displayMessage(char* line1, char* line2);
 
 /**
- * @brief Obs³uguje przerwanie dla przycisków S2, S3, S4, uwzglêdniaj¹c debouncing.
+ * @brief Interrupt handler for buttons S2, S3, and S4 with debounce functionality.
  */
 void PORTA_IRQHandler(void);
 
 /**
- * @brief Obs³uguje proces administracji u¿ytkownikami poprzez RFID.
+ * @brief Handles the user administration process using RFID cards.
  */
 void handleUsersAdministrate(void);
 
 /**
- * @brief Odczytuje UID karty RFID.
- * @return Status operacji (np. ACCESS_GRANTED, ACCESS_DENIED, RFID_ERROR, CARD_NOT_DETECTED).
+ * @brief Reads the UID of an RFID card.
+ * @return Status indicating the result of the operation (e.g., ACCESS_GRANTED, ACCESS_DENIED).
  */
 uint8_t handleReadRfidUID(void);
 
 /**
- * @brief Obs³uguje dostêp u¿ytkownika na podstawie karty RFID.
+ * @brief Handles access control logic based on RFID card data.
  */
 void handleRfidAccess(void);
 
 /**
- * @brief Obs³uguje logikê dzia³ania po naciœniêciu przycisków S2, S3, S4.
+ * @brief Handles button press logic for S2, S3, and S4.
  */
 void handleButtonsPressed(void);
 

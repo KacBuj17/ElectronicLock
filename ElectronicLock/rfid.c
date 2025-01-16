@@ -1,6 +1,4 @@
 #include "rfid.h"
-#include "spi.h"
-#include "MKL05Z4.h"
 
 #define MFRC522_SPI_SPEED 1000000
 

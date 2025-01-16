@@ -1,5 +1,6 @@
-#include <stdint.h>
 #include "MKL05Z4.h"
+#include <stdint.h>
+#include "spi.h"
 
 #ifndef MFRC522_H
 #define MFRC522_H

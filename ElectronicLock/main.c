@@ -1,6 +1,7 @@
 #include "main.h"
 
 #define DEBOUNCE_DELAY_MS 100
+#define DOOR_OPEN_S 2
 
 volatile uint8_t S2_press = 0;
 volatile uint8_t S3_press = 0;
@@ -17,6 +18,9 @@ volatile uint8_t sekunda_OK = 0;
 volatile uint8_t display_message = 0;
 volatile uint32_t message_timer = 0;
 
+volatile uint8_t door_opened = 0;
+volatile uint32_t door_timer = 0;
+
 void SysTick_Handler(void)
 { 
     sekunda++;
@@ -31,6 +35,16 @@ void SysTick_Handler(void)
             if (message_timer == 0)
             {
                 display_message = 0;
+            }
+        }
+				
+				if (door_opened && door_timer > 0)
+        {
+            door_timer--;
+            if (door_timer == 0)
+            {
+                door_opened = 0;
+							  doorClose();
             }
         }
     }
@@ -154,6 +168,9 @@ void handleRfidAccess()
 						if(isUserInRoom(current_room, uid_str))
 						{
 								displayMessageWithTimeout("" , "ACCESS GRANTED", 2);
+								doorOpen();
+								door_opened = 1;
+								door_timer = DOOR_OPEN_S;
 						}
 						else
 						{
@@ -172,6 +189,7 @@ int main(void)
     MFRC522_Init();
     Klaw_Init();
     Klaw_S2_4_Int();
+		lockInit();
     LCD1602_Init();
     LCD1602_Backlight(TRUE);
     LCD1602_ClearAll();

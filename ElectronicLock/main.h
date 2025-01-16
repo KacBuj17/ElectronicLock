@@ -11,6 +11,7 @@
 #include "rooms.h"
 #include "rfid.h"
 #include "klaw.h"
+#include "lock.h"
 
 extern volatile uint8_t S2_press;
 extern volatile uint8_t S3_press;
@@ -21,6 +22,9 @@ extern volatile uint8_t sekunda_OK;
 
 extern volatile uint8_t display_message;
 extern volatile uint32_t message_timer;
+
+extern volatile uint8_t door_opened;
+extern volatile uint32_t door_timer;
 
 void SysTick_Handler(void);
 void displayMessageWithTimeout(char* line1, char* line2, uint8_t timeout_seconds);

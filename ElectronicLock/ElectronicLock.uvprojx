@@ -443,6 +443,16 @@
               <FileType>5</FileType>
               <FilePath>.\main.h</FilePath>
             </File>
+            <File>
+              <FileName>lock.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\lock.c</FilePath>
+            </File>
+            <File>
+              <FileName>lock.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\lock.h</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>
